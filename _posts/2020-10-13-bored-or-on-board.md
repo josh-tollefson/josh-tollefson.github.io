@@ -15,7 +15,8 @@ Tabletop gaming is a big hobby of mine and millions of other people across the g
 
 Usually, a good selling game needs to be a good quality game. Central to a good quality game is constructive feedback and iteration. For my three week project at Insight Data Science, I built an application designed for board game developers who desire a quick way to get focused feedback for their board game prototypes. On the web-app, the developer can upload a csv file containing written reviews of their game and learn two things: 1. The overall sentiment about their game; 2. Sample sentences most likely to represent a particular issue raised in a board game review, such a mechanics or art direction. The developer can use this automated focus group to quickly parse how its perceived, common discussion points, and track how these metrics change over successive design cycles.
 
-[Figure 2 - Gif of webpage]
+- Play around with the web-app: http://bit.ly/boredboardsite
+- Find the project on my Github: https://github.com/josh-tollefson/bored-or-on-board
 
 I built this web-app in Streamlit with the backend data acquisition, analysis, and machine learning (ML) modeling in Python. Board game comments and ratings were scraped from boardgamegeek.com with their XML-API [4]. In total, I processed ~300K comments and constructed a natural language processing (NLP) pipeline to prepare the comments for ML modeling. I then tackled two binary classification problems on the processed text: 1. Sentiment prediction (good or bad user rating); 2. Categorization prediction (does the review discuss the game’s mechanics? Art direction? Component quality?). Models for each are saved and used by the web-app to run on the developer-uploaded csv comment file. Each part of this pipeline is dissected in more detail below.
 
@@ -23,11 +24,9 @@ I built this web-app in Streamlit with the backend data acquisition, analysis, a
 
 Of the few hundred thousand scrapped comments, a significant fraction of them are short. I found that word length had an important impact on the quality of the model fits. Moreover, I was surprised by the number of comments that were written in a foreign language. I therefore tossed out comments that were below 25 words long and not in English.
 
-![comment-length](https://i.imgur.com/5lLdsOr.png =100x)
+![comment-length](https://i.imgur.com/tWqQ85w.png =100x)
 
 I processed the comments by building an NLP pipeline with regex and NLTK. I removed capitalization and punctuation and ignored words that had little impact on meaning (stop words). Finally, I lemmatized words (shortening and consolidating words based on meaning and context) to avoid redundancy in my ultimate ‘board game review’ corpus. The final outcome of this NLP processing is illustrated in the below figure, which shows how individual words are parsed and combined. 
-
-[Figure 4 - comment count]
 
 My final library of processed comments was parsed further into n-grams, with each n-gram encoded based on their document and comment frequency (TF-IDF). An n-gram is n sequential words in the text (e.g. “words in the text” is a 4-gram). This encoding is a matrix of NLP-processed comments (rows) versus the most frequent n-grams (columns), where each element is the frequency score of an n-gram for that comment. This matrix is the set of features fed into the binary prediction models. 
 
@@ -46,8 +45,6 @@ Creating labels for the comment categorization was trickier as there lacked a st
 For instance, the comment: “Monopoly is a dice rolling, family game that is overly long and luck-based” would be labeled [1,0,0,1,1] as it discusses the game’s mechanics, length, and accessibility (dice rolling, overly long, and family game), but not anything else. 
 
 Having assigned labels to the encoded comments, I split the data into 80/20 training-test sets and ran Logistic Regression, Naive Bayes, and Random Forest binary classification models on the sentiment data and each of the category data. I achieved accuracies of ~85% for the sentiment analysis for each method. Precision was my metric of choice for comment categorization as I wanted to ensure that the sentences highlighted by my app were most likely to represent the label in question. I obtained precision of 80-90%, depending on the method and category. 
-
-[Figure 5 - confusion matrix]
 
 ### Summary
 
