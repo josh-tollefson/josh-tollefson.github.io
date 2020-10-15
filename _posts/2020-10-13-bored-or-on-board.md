@@ -9,7 +9,7 @@ tags: [board games, NLP, ML]
 
 Tabletop gaming is a big hobby of mine and millions of other people across the globe. Board games are a multi-billion dollar industry [1], with the number of games published each year growing exponentially since the early 2000s [2]. Games these days are no longer like Monopoly, which has the notorious reputation for being slow, dry, luck-based, and for causing fights due to made-up rules [3]. As the supply of board games increases, developers need their products to be vibrant, well-paced, and fun experiences in order to stand out.
 
-![bg-per-year](https://i.imgur.com/pzuJRbm.png =250x)
+![bg-per-year](https://i.imgur.com/pzuJRbm.png =100x)
 
 ### Project Introduction
 
