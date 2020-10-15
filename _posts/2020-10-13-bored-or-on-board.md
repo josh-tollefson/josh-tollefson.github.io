@@ -23,7 +23,7 @@ I built this web-app in Streamlit with the backend data acquisition, analysis, a
 
 Of the few hundred thousand scrapped comments, a significant fraction of them are short. I found that word length had an important impact on the quality of the model fits. Moreover, I was surprised by the number of comments that were written in a foreign language. I therefore tossed out comments that were below 25 words long and not in English.
 
-[Figure 3 - comment count]
+![comment-length](https://i.imgur.com/5lLdsOr.png =100x)
 
 I processed the comments by building an NLP pipeline with regex and NLTK. I removed capitalization and punctuation and ignored words that had little impact on meaning (stop words). Finally, I lemmatized words (shortening and consolidating words based on meaning and context) to avoid redundancy in my ultimate ‘board game review’ corpus. The final outcome of this NLP processing is illustrated in the below figure, which shows how individual words are parsed and combined. 
 
@@ -45,7 +45,7 @@ Creating labels for the comment categorization was trickier as there lacked a st
 
 For instance, the comment: “Monopoly is a dice rolling, family game that is overly long and luck-based” would be labeled [1,0,0,1,1] as it discusses the game’s mechanics, length, and accessibility (dice rolling, overly long, and family game), but not anything else. 
 
-Having assigned labels to the encoded comments, I split the data into 80/20 training-test sets and ran Logistic Regression, Naive Bayes, and Random Forest binary classification models on the sentiment data and each of the category data.. I achieved accuracies of ~85% for the sentiment analysis for each method. Precision was my metric of choice for comment categorization as I wanted to ensure that the sentences highlighted by my app were most likely to represent the label in question. I obtained precision of 80-90%, depending on the method and category. 
+Having assigned labels to the encoded comments, I split the data into 80/20 training-test sets and ran Logistic Regression, Naive Bayes, and Random Forest binary classification models on the sentiment data and each of the category data. I achieved accuracies of ~85% for the sentiment analysis for each method. Precision was my metric of choice for comment categorization as I wanted to ensure that the sentences highlighted by my app were most likely to represent the label in question. I obtained precision of 80-90%, depending on the method and category. 
 
 [Figure 5 - confusion matrix]
 
