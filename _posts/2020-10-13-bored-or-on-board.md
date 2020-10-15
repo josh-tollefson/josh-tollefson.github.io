@@ -9,7 +9,7 @@ tags: [board games, NLP, ML]
 
 Tabletop gaming is a big hobby of mine and millions of other people across the globe. Board games are a multi-billion dollar industry [1], with the number of games published each year growing exponentially since the early 2000s [2]. Games these days are no longer like Monopoly, which has the notorious reputation for being slow, dry, luck-based, and for causing fights due to made-up rules [3]. As the supply of board games increases, developers need their products to be vibrant, well-paced, and fun experiences in order to stand out.
 
-[Figure 1]
+![bg-per-year](https://i.imgur.com/pzuJRbm.png)
 
 ### Project Introduction
 
@@ -53,7 +53,7 @@ Having assigned labels to the encoded comments, I split the data into 80/20 trai
 
 “Bored, or on Board?” is a web-app designed to help board game developers get quick feedback for their game. In this three week sprint, I learned a lot about end-to-end project development in data science. If I had more time, I would extend the ideas developed in this project to other domains, such as video games via Steam reviews. In addition, I would love to incorporate additional data sources, such as Amazon and Kickstarter reviews and purchases, so that a developer using my app could determine how successive improvements in their game’s quality might result in improved sales. In this way, the developer could determine when their design is good enough, ultimately getting their product published faster and introducing more great games into the world!
 
-[1] https://www.statista.com/statistics/829285/global-board-games-market-value/
-[2] Figure made by me, with data collected from boardgamegeek.com
-[3] https://twitter.com/calvinn_hobbes/status/1087140198859722753
-[4] Thanks to https://gitlab.com/recommend.games/board-game-scraper by Markus Shepherd
+- [1] https://www.statista.com/statistics/829285/global-board-games-market-value/
+- [2] Figure made by me, with data collected from boardgamegeek.com
+- [3] https://twitter.com/calvinn_hobbes/status/1087140198859722753
+- [4] Thanks to https://gitlab.com/recommend.games/board-game-scraper by Markus Shepherd
