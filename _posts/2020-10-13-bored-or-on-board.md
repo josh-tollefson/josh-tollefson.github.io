@@ -3,13 +3,12 @@ layout: post
 title: Bored, or on Board?
 subtitle: Automated Feedback for Board Game Developers
 cover-img: /assets/img/game-stack.png
-thumbnail-img: /assets/img/game-stack.png
 tags: [board games, NLP, ML]
 ---
 
 Tabletop gaming is a big hobby of mine and millions of other people across the globe. Board games are a multi-billion dollar industry [1], with the number of games published each year growing exponentially since the early 2000s [2]. Games these days are no longer like Monopoly, which has the notorious reputation for being slow, dry, luck-based, and for causing fights due to made-up rules [3]. As the supply of board games increases, developers need their products to be vibrant, well-paced, and fun experiences in order to stand out.
 
-![bg-per-year](https://i.imgur.com/pzuJRbm.png =100x)
+![bg-per-year](https://i.imgur.com/pzuJRbm.png =75x)
 
 ### Project Introduction
 
@@ -28,7 +27,7 @@ Of the few hundred thousand scrapped comments, a significant fraction of them ar
 
 I processed the comments by building an NLP pipeline with regex and NLTK. I removed capitalization and punctuation and ignored words that had little impact on meaning (stop words). Finally, I lemmatized words (shortening and consolidating words based on meaning and context) to avoid redundancy in my ultimate ‘board game review’ corpus. The final outcome of this NLP processing is illustrated in the below figure, which shows how individual words are parsed and combined. 
 
-My final library of processed comments was parsed further into n-grams, with each n-gram encoded based on their document and comment frequency (TF-IDF). An n-gram is n sequential words in the text (e.g. “words in the text” is a 4-gram). This encoding is a matrix of NLP-processed comments (rows) versus the most frequent n-grams (columns), where each element is the frequency score of an n-gram for that comment. This matrix is the set of features fed into the binary prediction models. 
+My library of processed comments was further divided into n-grams, with each n-gram encoded based on their document and comment frequency (TF-IDF). An n-gram is n sequential words in the text (e.g. “words in the text” is a 4-gram). This encoding results in a matrix of NLP-processed comments (rows) versus n-gram (columns), where each element is the frequency score of an n-gram for that comment. This matrix is the set of features fed into the binary prediction models. 
 
 ### Sentiment and Categorization Prediction
 
@@ -52,5 +51,5 @@ Having assigned labels to the encoded comments, I split the data into 80/20 trai
 
 - [1] https://www.statista.com/statistics/829285/global-board-games-market-value/
 - [2] Figure made by me, with data collected from boardgamegeek.com
-- [3] https://twitter.com/calvinn_hobbes/status/1087140198859722753
+- [3] https://twitter.com/Calvinn_Hobbes/status/1087140198859722753/photo/1
 - [4] Thanks to https://gitlab.com/recommend.games/board-game-scraper by Markus Shepherd
